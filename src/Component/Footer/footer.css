@@ -1,0 +1,494 @@
+body{
+box-sizing:  border-box;
+padding: 0px ;
+margin: 0px;
+
+
+}
+
+.footer-section{
+
+width: 100%;
+
+background-color: #F9F2F2;
+border-bottom: 5px solid #2F3092;
+
+}
+
+
+.footer-section {
+
+width: 100%;
+
+}
+
+.footer-container{
+
+padding: 0px 100px ;
+
+}
+
+
+.footer-width{
+
+width: 1200px ;
+display: flex;
+
+}
+
+.footer-col{
+
+width: 100%;
+padding: 20px  30px;
+margin:0px 20px;
+}
+
+.footer-col .title{
+     padding: 10px;
+    color: #2F3092;
+    font-family: "Arial", Sans-serif;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-transform: capitalize;
+    letter-spacing: 1.6px;
+    -webkit-text-stroke-color: #000;
+    stroke: #000;
+    text-shadow: 0px 0px 0px rgba(0,0,0,0.3)
+
+
+}
+
+.footer-detail{
+width: 100%;
+padding: 15px ;
+font-family: "Times New Roman", Sans-serif;
+font-size: 16px;
+    line-height: 1.6em;
+}
+
+.footer-link{
+
+
+
+    color: #2F3092;
+    font-family: "Arial", Sans-serif;
+  
+    text-transform: capitalize;
+    letter-spacing: 1.6px;
+    -webkit-text-stroke-color: #000;
+    stroke: #000;
+    text-shadow: 0px 0px 0px rgba(0,0,0,0.3);
+    
+
+}
+
+.footer-linkicon{
+
+font-size: 14px;
+--icon-vertical-offset: 0px;
+
+}
+.footerlink{
+line-height: 50px;
+padding-left: 15px;
+text-decoration: none;
+color: black;
+font-size: 16px;
+
+}
+
+.footerlink:hover{
+
+color:#2F3092;
+
+
+}
+
+
+.footer-col-3{
+
+    width: 50%;
+    padding: 20px  25px;
+    
+}
+
+
+.footer-col-3 .title{
+    padding: 10px;
+   color: #2F3092;
+   font-family: "Arial", Sans-serif;
+   font-size: 1.4em;
+   font-weight: bold;
+   text-transform: capitalize;
+   letter-spacing: 1.6px;
+   -webkit-text-stroke-color: #000;
+   stroke: #000;
+   text-shadow: 0px 0px 0px rgba(0,0,0,0.3)
+
+
+}
+
+
+
+
+
+
+
+
+
+  .footer-email{
+
+width: 100%;
+
+/* border: 1px solid black; */
+display: inline-flex;
+padding:5px 0px ;
+color: #000;
+
+  }
+.email-circle-icon{
+
+
+    height: 35px ;
+    width: 35px ;
+    border-radius: 100px ;
+    font-size: 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#2F3092;
+     
+
+
+}
+
+
+/* .email-circle-icon:hover{
+
+background-color: #0077b5;
+
+
+} */
+
+
+
+.email-info{
+
+line-height: 35px ;
+font-family: "Times New Roman", Sans-serif;
+font-size: 1em;
+ padding-left: 2px; 
+
+}
+
+
+
+.footer-col ul {
+
+list-style: none;
+text-decoration: none;
+width: 100%;
+
+}
+.display-f{
+
+display: flex;
+width: 100%;
+/* border: 1px solid black; */
+/* margin-right: 100px; */
+
+}
+
+
+.fas{
+
+font-weight: 700;
+font-size: 14px;
+
+}
+
+.social-media{
+padding: 5px  0px;
+display: flex;
+justify-content: space-between;
+gap: 20px;
+/* border: 1px solid black; */
+
+}
+
+.social-media a{
+
+text-decoration: none;
+list-style: none;
+}
+
+
+
+.social-circle {
+
+    height: 35px ;
+    width: 35px ;
+    font-size: 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#05A0D2;
+    font-weight: 400;
+    transition: all 0.3s ;
+}
+.social-circle:hover{
+ font-size: 18px;
+ 
+    transform:scale(1.1);
+}
+
+
+
+
+.social-circle.facebook-bg{
+
+background-color: #0764b1;
+
+}
+.social-circle.instagram-bg{
+
+    background-color: black;
+    
+    }
+.social-circle.Linkedin-bg{
+
+background-color: #0077b5;
+
+}
+
+.social-circle.youtube-bg{
+
+background-color: #cd201f;
+    
+    }
+
+.social-circle.pinterest-bg{
+
+background-color: #bd081c;
+
+
+}
+
+.social-circle.reddit-bg{
+
+    background-color: #ff4500;
+}
+
+
+@media screen  and (max-width:1550px) and (min-width:300px ) {
+
+
+    .footer-container{
+
+        padding: 0px 0px;
+      
+      
+          }
+          .footer-width{
+      
+      width: 100%;
+      display: flex;
+      padding: 20px  0px;
+      margin: 0px;
+      
+          }
+      
+          .footer-col{
+      
+              width: 100%;
+              padding: 20px  10px;
+              margin:0px 0px;
+              
+              
+              }
+      
+      
+          .footer-col-3{
+      
+              width: 60%;
+              padding: 20px  25px;
+              /* margin-left: 20px; */
+          
+          
+          }
+      
+          .footer-col-3 .title{
+              padding: 0px;
+           
+          }
+      
+          .social-media{
+            padding: 5px  0px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            /* border: 1px solid black; */
+            
+            }
+            
+
+
+
+
+
+
+
+}
+
+
+@media screen  and (max-width:1024px) and (min-width:300px ) {
+
+    .footer-container{
+
+  padding: 0px 0px;
+
+
+    }
+    .footer-width{
+
+width: 100%;
+display: block;
+padding: 20px  0px;
+margin: 0px;
+
+    }
+
+    .footer-col{
+
+        width: 100%;
+        padding: 20px  10px;
+        margin:0px 0px;
+        
+        
+        }
+
+
+    .footer-col-3{
+
+        width: 50%;
+        padding: 20px  10px;
+        /* margin-left: 20px; */
+    
+    
+    }
+
+    .footer-col-3 .title{
+        padding: 0px;
+     
+    }
+
+    .footer-email{
+
+
+        width: 100%;
+
+        /* border: 1px solid black; */
+        /* display: inline-flex; */
+        padding:5px 0px ;
+
+    }
+
+
+
+
+    .email-info{
+         padding-left: 0px; 
+        
+        }
+    
+}
+
+
+             /* footer bottom section */
+
+
+
+.footer-container-bottom{
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    background-color: #EDE8E8;
+    }
+    
+    .footer-bottom{
+    
+    width: 100%;
+    display: flex;
+    padding: 10px 0px;
+    justify-content: space-around;
+    font-family: Roboto,sans-serif;
+        color:#2F3092 ;
+        font-size: 16px;
+        font-weight: 600;
+    
+    
+    }
+    .footer-left{
+    
+    /* padding-right: 200px; */
+    
+   
+    
+    }
+    
+    .footer-right{
+    
+    /* padding-right: 80px; */
+    
+    
+    
+    }
+    
+    .footer-right a{
+    
+    text-decoration: none;
+    list-style: none;
+    font-family: Roboto,sans-serif;
+    color: #2F3092;
+    font-size: 16px;
+    font-weight: 600;
+    
+    }
+    
+
+
+   @media screen  and (max-width:1024px) and (min-width:300px ){
+    
+  .footer-bottom{
+width: 100%;
+display: block;
+
+  }
+.footer-left{
+display: flex;
+padding-left: 20px;
+padding-right: 0px;
+width: 100%;
+/* border: 1px solid black; */
+}
+.footer-right{
+
+padding-right: 20px;
+padding-left: 30px;
+
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+

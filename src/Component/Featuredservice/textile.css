@@ -1,0 +1,301 @@
+body{
+
+margin: 0px ;
+padding: 0px ;
+ box-sizing: border-box;
+
+
+}
+
+
+.data-underline.strem{
+
+text-underline-offset: 30px;
+
+}
+
+.title.textile{
+
+padding-bottom: 30px;
+
+
+
+}
+
+
+.about-image.textile-img img{
+
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.72);
+
+}
+
+
+         /* main textile  */
+
+
+
+.textile-main{
+
+width: 100%;
+margin-top: 80px;
+
+
+}
+
+
+.textile-heading{
+
+    padding: 0px 30px 0px 30px;
+    box-shadow: 0px 0px 10px 0px #FFFFFF;
+
+}
+
+
+.textile-heading h3{
+
+font-size: 32px;
+font-family: Roboto,sans-serif;
+font-weight: 600;
+margin: 10px 0 24px;
+}
+
+
+
+
+.textile-display{
+
+display: flex;
+margin-top: 50px;
+
+
+}
+
+
+
+
+
+
+
+.textile-left{
+
+width: 50%;
+/* background-color: #FFFFFF; */
+padding: 0px;
+margin-right: 20px;
+
+
+
+
+}
+
+
+
+.textile-background-overlay{
+
+
+    /* background-color: #f5f7fa; */
+    opacity: 0.97;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+    height: 10%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+
+}
+
+.text-left-width{
+
+background-color: #FFFFFF;
+margin-bottom: 50px;
+
+
+}
+
+
+
+
+
+
+
+
+.textile-left-heading{
+
+    margin: 0px 0px 12px 0px;
+
+
+}
+
+.text-left-title{
+
+    color: #333333;
+    font-family: "Roboto", Sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.333em;
+    letter-spacing: -0.25px;
+
+
+
+}
+
+.textile-left-detail p a{
+
+color: #000000;
+    text-decoration: none;
+
+}
+
+
+
+
+
+.textile-left-detail{
+
+
+    text-align: justify;
+    color: #000000;
+    font-size: 0.875rem;
+    line-height: 1.617em;
+padding: 5px;
+
+
+}
+
+
+.textile-right{
+
+
+width: 50%;
+
+margin-left: 20px;
+
+
+
+}
+
+
+
+
+
+
+.text-right-width{
+
+    background-color: #FFFFFF;
+    margin-bottom: 50px;
+    
+    
+    }
+    
+    
+
+    .textile-right-heading{
+    
+        margin: 0px 0px 12px 0px;
+    
+    
+    }
+    
+    .text-right-title{
+    
+        color: #333333;
+        font-family: "Roboto", Sans-serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.333em;
+        letter-spacing: -0.25px;
+
+    
+    
+    }
+    
+    .textile-right-detail p a{
+    
+    color: #000000;
+        text-decoration: none;
+    
+    }
+    
+    
+    
+    
+    
+    .textile-right-detail{
+    
+    
+        text-align: justify;
+        color: #000000;
+        font-size: 0.875rem;
+        line-height: 1.617em;
+    padding: 5px;
+    
+    
+    }
+    
+
+
+@media screen   and (max-width:1024px)  and (min-width:300px) {
+    
+
+    .data-underline.strem{
+
+        text-underline-offset: 10px;
+        
+        }
+
+
+.about-image.textile-img {
+
+width: 100%;
+padding: 10px;
+
+}
+
+
+
+
+
+
+
+
+
+
+.textile-display {
+
+display: block;
+
+
+}
+
+.textile-left{
+
+width: 100%;
+
+padding: 10px;
+
+
+}
+
+.textile-right {
+width: 100%;
+
+margin-left: 0px;
+padding: 10px;
+
+
+}
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+

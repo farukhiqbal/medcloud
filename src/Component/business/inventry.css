@@ -1,0 +1,53 @@
+
+
+
+
+
+.inventry-p{
+
+
+width: 1140px;
+/* border: 1px solid black; */
+
+
+margin:0px auto
+
+}
+
+
+.inventry-h{
+
+
+font-size: 18px ;
+font-weight: 700;
+
+
+
+}
+
+
+
+
+
+@media screen  and (max-width:1024px) and (min-width:300px) {
+
+    
+.inventry-p{
+
+width: 100%;
+margin: 0px ;
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+

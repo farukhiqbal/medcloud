@@ -1,0 +1,58 @@
+body{
+
+box-sizing: border-box;
+padding: 0px ;
+margin: 0px ;
+
+}
+
+.ind-container{
+
+width: 100%;
+/* border: 1px solid black; */
+
+
+
+}
+
+.ind-image {
+
+    padding:50px 250px;
+width: 100%;
+
+}
+
+
+
+
+@media screen and (max-width:1024px )   and (min-width:300px) {
+    
+
+.ind-container{
+
+
+width: 100%;
+
+}
+.ind-image{
+
+width: 100%;
+padding: 50px 0px;
+
+}
+
+.ind-image img{
+
+width: 100%;
+
+
+}
+
+
+
+}
+
+
+
+
+

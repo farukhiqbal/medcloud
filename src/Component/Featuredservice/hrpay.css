@@ -1,0 +1,455 @@
+.hr-container{
+
+background-color: #EDE8E8;
+width: 100%;
+margin: 0px ;
+box-sizing: border-box;
+display: flex;
+
+
+
+}
+
+.hr-left{
+padding-top: 60px;
+width: 50%;
+padding-left: 16%;
+
+
+}
+
+ .hr-heading{
+
+    font-family: Roboto,sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+
+}
+
+.hr-heading h3{
+
+    font-family: Roboto,sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+
+
+}
+
+
+
+
+
+.hr-list{
+
+padding-top: 50px ;
+width: 100%;
+
+
+}
+
+.hr-list ul {
+
+
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.hr-list ul li a{
+
+text-decoration: none;
+color: black;
+
+}
+
+.hr-list ul li {
+
+list-style: disc;
+display: list-item;
+
+
+}
+
+
+ul li p {
+
+margin-bottom: 20px;
+
+
+    
+}
+
+.hr-right{
+
+width: 50%;
+padding-top: 50px;
+padding-left: 90px;
+
+
+}
+
+
+
+.hr-image{
+    vertical-align: middle;
+    display: inline-block;
+width: 100%;
+padding-bottom: 60px;
+
+}
+
+
+.hr-image img{
+
+    height: auto;
+    max-width: 100%;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+
+}
+
+@media screen   and (max-width:1024px) and (min-width:300px ){
+
+.hr-container{
+
+display: block;
+
+
+
+}
+
+.hr-left {
+
+width: 100%;
+padding-left: 1%;
+
+
+}
+
+.hr-right{
+
+width: 100%;
+padding: 30px;
+}
+
+.hr-image img{
+    width: 100%;
+}
+
+    
+}
+
+
+
+
+
+
+
+.hrpay-container{
+
+width: 100%;
+text-align: center;
+margin: 50px  0px;
+
+
+}
+
+
+.hrpay-image{
+
+
+width: 100%;
+
+
+
+}
+
+
+.hrpay-image img {
+
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+
+
+}
+
+
+@media screen   and (max-width:1024px) and (min-width:300px ){
+
+.hrpay-container{
+
+text-align: start;
+
+}
+
+.hrpay-image{
+
+   padding-left: 15px; 
+}
+
+
+
+.hrpay-image img{
+
+
+    width: 95%;
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+.hrpay-heading{
+
+width: 100%;
+
+/* border-bottom: 5px solid black; */
+
+
+}
+
+
+.hrpay-heading .hrpay-title{
+
+text-align: center;
+
+}
+
+.hrpay-p {
+
+/* text-align: center; */
+
+padding:15px 160px ;
+
+}
+
+
+.hrpay-p p{
+font-size: 16px;
+width: 100%;
+padding: 0px 50px;
+font-family: Roboto,sans-serif;
+line-height: 30px;
+}
+
+
+.hrpay-line{
+
+/* border: 3px solid  black; */
+
+border: 3px solid ;
+/* border-color: black; */
+
+}
+
+
+
+
+@media screen   and (max-width:1024px) and (min-width:300px ){
+
+
+.hrpay-p{
+
+padding: 0px 10px;
+
+}
+.hrpay-p p{
+
+padding: 0px;
+
+
+}
+
+}
+
+
+
+
+
+
+
+.hrlist-container{
+
+width: 100%;
+padding: 30px 30px 30px 30px;
+
+
+
+}
+
+.hrlist-width{
+
+    max-width: 1140px;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+/* border:  1px solid black; */
+
+}
+
+.hrlist-col{
+
+padding: 10px;
+width: 33.333%;
+
+/* border: 1px solid black; */
+}
+
+.list-heading {
+
+    padding: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 0px 0px 0px 5px;
+    border-color: #42A3CC;
+
+
+
+}
+
+
+.list-heading .list-title{
+
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+font-size: 18px ;
+font-weight: 600;
+font-family: Roboto,sans-serif;
+
+}
+
+.list-ul{
+
+padding-top: 30px;
+
+}
+
+
+
+.list-ul ul li{
+list-style: disc;
+
+}
+
+
+@media screen   and (max-width:1024px) and (min-width:300px ){
+
+
+.hr-container{
+
+padding: 10px;
+
+
+}
+
+
+.hrlist-width{
+
+width: 100%;
+display: block;
+
+
+}
+
+.hrlist-col{
+
+width: 100%;
+
+
+
+}
+
+}
+
+
+
+
+
+
+
+
+.hrattend-container{
+
+width: 100%;
+
+margin: 0px;
+padding: 0px ;
+}
+
+.attend-col{
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    display: flex;
+/* border: 1px solid black; */
+padding-left: 130px;
+}
+
+.hrattend-heading{
+
+padding: 10px;
+position: relative;
+width: 100%;
+flex-wrap: wrap;
+align-content: flex-start;
+
+
+}
+
+.attend-title{
+    padding: 10px 10px 10px 10px;
+    border-style: solid;
+    border-width: 0px 0px 0px 5px;
+    border-color: #42A3CC;
+    font-size: 32px;
+    font-family: Roboto,sans-serif;
+    font-weight: 600;
+}
+.attend-p  a{
+
+text-decoration: none;
+color: black;
+
+}
+
+.attend-p{
+
+padding-right: 185px;
+
+margin-right: 100px;
+}
+
+
+
+@media screen   and (max-width:1024px) and (min-width:300px ){
+
+.attend-col{
+
+padding-left: 10px;
+
+
+}
+
+.attend-p{
+
+margin: 0px;
+padding-right: 10px;
+
+}
+
+
+
+}

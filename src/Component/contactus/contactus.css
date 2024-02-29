@@ -1,0 +1,412 @@
+
+.con-container{
+   width: 100%;
+    background-color: #054669;
+     padding-bottom: 50px;
+    /* transition: background 0.3s, border-radius 0.3s, opacity 0.3s; */
+      overflow: hidden;
+
+box-sizing: border-box;
+
+}
+
+.con-container .con-data{
+
+    display: flex;
+    padding-left: 50px;
+    position: relative;
+     width: 100vw;
+    /* border: 1px solid red; */
+
+}
+
+ .con-left{
+padding: 0px 34px;
+width: 50%;
+
+margin-bottom: 30px;
+
+
+}
+
+    .heading-title{
+
+    color: #ffffff;
+    font-family: "Poppins", Sans-serif;
+    font-size: 66px;
+    font-weight: bold;
+    letter-spacing: -1px;
+text-decoration: underline 2.5px;
+text-underline-offset: 20px;
+}
+
+
+
+
+
+
+.con-text{
+
+    /* transition: background .3s,border .3s,border-radius .3s,box-shadow .3s,transform var(--e-transform-transition-duration,.4s); */
+    letter-spacing: -1px;
+
+    text-align: justify;
+    color: #ffffff;
+    font-family: "Lato", Sans-serif;
+    font-size: 18px;
+    -webkit-margin-before: 0;
+    margin-block-start: 0;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    line-height: 1.5em;
+    margin-right: 65px;
+    font-weight: 200;
+    padding-right: 5px;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+  
+
+.cap-letter{
+    background-color: #69727d;
+    color: #fff;
+    float: left;
+    text-align: center;
+    line-height: 1;
+    font-size: 50px;
+   padding: 5px;
+    margin-right: 15px;
+    /* border: 1px solid black; */
+    width: 65px;
+    margin-top: 10px;
+
+}
+
+.con-left .con-social-media {
+
+display: flex;
+width: 100%;
+gap: 10px;
+padding-top: 50px;
+}
+
+.con-social-media a{
+
+    text-decoration: none;
+    list-style: none;
+    }
+    
+    
+    
+    .con-social-circle {
+    
+        height: 35px ;
+        width: 35px ;
+        font-size: 16px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color:#05A0D2;
+        font-weight: 400;
+        border-radius: 50%;
+        transition: all 0.3s ;
+    }
+    .con-social-circle:hover{
+     font-size: 18px;
+     
+        transform:translatey(-5px);
+    }
+    
+    
+    
+    
+    .con-social-circle.facebook-bg{
+    
+    background-color: #0764b1;
+    
+    }
+    .con-social-circle.instagram-bg{
+    
+        background-color: black;
+        
+        }
+    .con-social-circle.Linkedin-bg{
+    
+    background-color: #0077b5;
+    
+    }
+    
+    .con-social-circle.youtube-bg{
+    
+    background-color: #cd201f;
+        
+        }
+    
+    .con-social-circle.pinterest-bg{
+    
+    background-color: #bd081c;
+    
+    
+    }
+    
+    .con-social-circle.reddit-bg{
+    
+        background-color: #ff4500;
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.con-right{
+
+width: 50%;
+color: #ffffff;
+/* border: 1px solid red; */
+
+}
+
+.con-right-data .right-heading{
+
+    color: #ffffff;
+    font-family: "Poppins", Sans-serif;
+    font-size: 38px;
+    font-weight: bold;
+    line-height: 1.1em;
+    letter-spacing: -1px;
+}
+
+
+.con-form{
+    transition: background .3s,border .3s,
+    border-radius .3s,box-shadow .3s,transform var(--e-transform-transition-duration,.4s);
+
+padding-top: 30px;
+width: 100%;
+padding-right: 120px;
+}
+
+
+
+/* Form { */
+ form  p{
+
+border: 1px solid white;
+/* padding: 10px; */
+
+}
+
+
+input {
+    width: 100% !important;
+    /* border: 1px solid #054669; */
+    border: none;
+    background: transparent;
+    color: white;
+    -webkit-box-shadow: none;
+    /* height: 20px; */
+}
+input.wpcf7-form-control.wpcf7-submit {
+    background: #30698a;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+textarea.wpcf7-form-control.wpcf7-textarea.wpcf7-validates-as-required {
+    width: 70% !important;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+}
+
+textarea, input {
+    text-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+input {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+textarea {
+    width: 50%;
+    height: 120px;
+    padding: 15px 20px;
+}
+
+
+
+input.wpcf7-form-control.wpcf7-submit {
+    background: #30698a;
+    border: none;
+    margin-bottom: 50px;
+}
+  form  input[type="text"],input[type="email"],input[type="number"]   {
+
+    color: var(--sydney-grey-color);
+    border: 1px solid var(--sydney-border-color);
+    height: 50px;
+    padding: 4px 20px;
+    border-radius: 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+/* CSS */
+.button-58 {
+    align-items: center;
+    background-color:#6e9dec;
+    border: 2px solid #6e9dec;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    fill: #000;
+    font-family: Inter,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    min-width: 140px;
+    outline: 0;
+    padding: 0 17px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-58:focus {
+    color: #171e29;
+  }
+  
+  .button-58:hover {
+    background-color: #3385ff;
+    border-color: #3385ff;
+    fill: #06f;
+  }
+  
+  .button-58:active {
+    background-color: #3385ff;
+    border-color: #3385ff;
+    fill: #06f;
+  }
+  
+  @media (min-width: 768px) {
+    .button-58 {
+      min-width: 170px;
+    }
+  }
+
+
+
+@media screen  and (max-width:1024px)  and (min-width:300px) {
+    
+
+
+
+      .con-container .con-data{
+padding-left: 0px;
+            margin: 0px ;
+display: block;
+      }
+
+.con-text{
+
+    margin-right: 0px;
+padding: 25px;
+
+
+}
+
+.heading-title{
+
+text-align: center;
+
+
+}
+
+
+.p-data{
+
+
+width: 100%;
+
+padding: auto;
+margin: 0px;
+}
+
+.con-left {
+
+width: 100%;
+padding: 0px;
+
+
+}
+
+.con-right{
+
+width: 100%;
+
+
+
+}
+.con-left .con-social-media{
+
+
+text-align: center;
+padding-left: 30px;
+
+}
+
+.con-right-data .right-heading{
+
+text-align: center;
+
+}
+
+.con-form{
+
+padding-left: 30px;
+
+padding-right:35px ;
+
+}
+
+
+
+
+
+
+}
+
+
+
+

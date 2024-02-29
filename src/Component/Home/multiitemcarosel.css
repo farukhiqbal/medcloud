@@ -1,0 +1,72 @@
+body{
+
+box-sizing: border-box;
+padding: 0px ;
+margin: 0px ;
+position: relative;
+
+
+}
+
+.multi-imagewidth{
+
+width: 100%;
+padding: 0px ;
+margin-bottom: 20px;
+
+
+
+}
+
+
+
+
+.multi-image{
+padding: 0px  ;
+margin: 0px   340px ;
+box-sizing: border-box;
+width: 60%;
+text-align: center;
+justify-content: center;
+
+
+}
+
+
+
+
+@media screen  and (max-width:1024px )  and (min-width:440px ) {
+    body{
+
+        box-sizing: border-box;
+        padding: 0px ;
+        margin: 0px ;
+        position: relative;
+        width: 100%;
+        
+        }
+        
+    
+    .multi-image{
+        padding: 0px  5px ;
+        margin: 0px   0px ;
+        margin-left: 25px;
+        box-sizing: border-box;
+        width: 90%;
+        text-align: center;
+        justify-content: center;
+        
+        
+        }
+
+        .multi-image img{
+            width: 85%;
+        }
+
+
+
+}
+
+
+
+
