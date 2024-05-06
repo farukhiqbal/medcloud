@@ -13,8 +13,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import { useEffect } from 'react';
 import Counterup from './Counterup';
-
-
+import homemanu from '../../asset/manuhome.png'
+import manufacture from '../../asset/manufacture.png'
 
 const Home = () => {
 
@@ -38,7 +38,7 @@ const Home = () => {
          
                  <div className='image-div' data-aos-duration="1700" data-aos="fade-right">
 
-<img src='/asset/manuhome.png'/>
+<img src={homemanu}/>
 </div>
 
              </div>
@@ -168,7 +168,7 @@ const Home = () => {
         
                              <div className='about-image'>
         
-                         <img src='/asset/manufacture.png'/>
+                         <img src={manufacture}/>
         
         
         

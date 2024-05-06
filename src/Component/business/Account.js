@@ -1,5 +1,6 @@
 import React from 'react'
-
+import hrm1 from '../../asset/hrm1.png'
+import hrm4 from '../../asset/hrm 4.png'
 
 
 const Account = () => {
@@ -8,7 +9,7 @@ const Account = () => {
  <section>
         <div className="hrpay-container">
           <div className="hrpay-image">
-            <img src="/asset/hrm1.png" width='70%'/>
+            <img src={hrm1} width='70%'/>
           </div>
         </div>
       </section>
@@ -39,7 +40,7 @@ const Account = () => {
         <section>
           <div className="hrpay-container">
             <div className="hrpay-image" >
-              <img src="/asset/hrm 4.png" width='63%' />
+              <img src={hrm4} width='63%' />
             </div>
           </div>
         </section>

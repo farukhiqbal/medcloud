@@ -5,7 +5,9 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Software from '../Home/Software';
-
+import  manufacture from '../../asset/manufacture.png'
+import manuhome from '../../asset/manuhome.png'
+import dashboard2 from '../../asset/product-dashboard3.jpeg'
 
 const ManuEpr = () => {
 
@@ -29,7 +31,7 @@ const ManuEpr = () => {
          
                  <div className='image-div'>
 
-<img src='/asset/manufacture.png'/>
+<img src={manufacture}/>
 </div>
 
              </div>
@@ -160,7 +162,7 @@ const ManuEpr = () => {
         
                              <div className='about-image'>
         
-                         <img src='/asset/manuhome.png'/>
+                         <img src={manuhome}/>
         
         
         
@@ -319,7 +321,7 @@ const ManuEpr = () => {
 
                   <div className='epr-image'>
 
-                <img src='https://multi-techno.com/wp-content/uploads/elementor/thumbs/Untitled-1024x932-1-q4d9pzs7yrgdyy4ovluwctjmr0xebanjvmiuyfyhk8.webp'/>
+                <img src={dashboard2}/>
 
 
                   </div>

@@ -5,7 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import './pointsale.css';
 import Software from '../Home/Software';
-
+import dashboardProduct from '../../asset/product dashboard.jpeg'
+import fmsd from '../../asset/FmsD.png'
+import fms1 from '../../asset/FMS .png'
 
 const Pointsale = () => {
 
@@ -31,7 +33,7 @@ const Pointsale = () => {
          
                  <div className='image-div' data-aos-duration="1700" data-aos="fade-right">
 
-<img src='https://multi-techno.com/wp-content/uploads/elementor/thumbs/Home-Screen-q903h95xy06orrd7xp8icu01xx1h17d185g5clmjxg.png'/>
+<img src={dashboardProduct}/>
 </div>
 
              </div>
@@ -178,7 +180,7 @@ const Pointsale = () => {
 
         <div className='dash-image'>
 
-              <img src='https://multi-techno.com/wp-content/uploads/elementor/thumbs/sales_dashboard-q4kc03e92cj3lv1tctmd2yhxg87emhybc0uc8sjbwq.png'alt=''/>
+              <img src={ fms1 } alt=''/>
 
         </div>
 
@@ -193,7 +195,7 @@ const Pointsale = () => {
 
 <div className='dash-image'>
 
- <img src='https://multi-techno.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2023-04-05-at-4.21.01-PM-1-q4kbqzclnv7bm0ky5h46bzet461hoze9azji40d8t0.jpeg'alt=''/>
+ <img src={fmsd}  alt=''/>
 
 </div>
 

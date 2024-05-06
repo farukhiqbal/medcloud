@@ -1,7 +1,7 @@
 import React from 'react'
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
 import './whatsappchat.css';
-
+import logo  from '../../asset/med.png'
 
 const Whatsappchat = () => {
 
@@ -13,7 +13,7 @@ const Whatsappchat = () => {
        <FloatingWhatsApp
        phoneNumber="03236311542"
        accountName="Medcloud"
-       avatar='./asset/med.png'
+       avatar={logo}
        chatMessage="how can help you sir   please write your name"
        allowEsc
        allowClickAway

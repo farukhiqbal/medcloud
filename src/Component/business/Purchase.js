@@ -1,5 +1,8 @@
 import React from "react";
 import "./purchase.css";
+import purchase from '../../asset/purchase.webp'
+
+
 
 const Purchase = () => {
   return (
@@ -38,7 +41,7 @@ const Purchase = () => {
         <section>
           <div className="hrpay-container">
             <div className="hrpay-image">
-              <img src="/asset/purchase.webp" />
+              <img src={purchase} />
             </div>
           </div>
         </section>

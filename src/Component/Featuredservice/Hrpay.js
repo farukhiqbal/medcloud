@@ -5,6 +5,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Software from "../Home/Software";
+import hrmhome   from '../../asset/Fmshome.png'
+import hrm2 from '../../asset/hrm2.png'
+
 
 const Hrpay = () => {
   const [show, setShow] = useState(false);
@@ -18,7 +21,7 @@ const Hrpay = () => {
         <div className="container-fluidimg">
           <div className="image-left">
             <div className="image-div">
-              <img src="./asset/hrm home.png" />
+              <img src={hrmhome} />
             </div>
           </div>
 
@@ -266,7 +269,7 @@ const Hrpay = () => {
         <section>
           <div className="hrpay-container">
             <div className="hrpay-image">
-              <img src="./asset/hrm2.png" />
+              <img src={hrm2} />
             </div>
           </div>
         </section>

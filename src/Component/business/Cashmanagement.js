@@ -1,5 +1,10 @@
 import React from 'react';
 import './cashmanagement.css';
+import cash from '../../asset/cash.webp'
+import cashimg  from '../../asset/cashimg.webp'
+
+
+
 
 const Cashmanagement = () => {
   return (
@@ -9,7 +14,7 @@ const Cashmanagement = () => {
            <section>
               <div className='cash-banner'>
                   <div className='cash-img'>
-                    <img src='/asset/cash.webp'alt=''/>
+                    <img src={cash}   alt=''/>
                     <h1>Cash Management System</h1>
                   </div>
          
@@ -154,7 +159,7 @@ const Cashmanagement = () => {
                 <section>
         <div className="hrpay-container">
           <div className="cashpay-image">
-            <img src="/asset/cashimg.webp" />
+            <img src={cashimg} />
           </div>
         </div>
       </section>

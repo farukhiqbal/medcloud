@@ -8,6 +8,9 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink, Link } from "react-router-dom";
+import logo from '../../asset/med.png'
+
+
 
 const isMobileDevice = () => {
   return window.innerWidth <= 567; // Adjust the breakpoint as needed
@@ -92,7 +95,7 @@ const Header = () => {
         >
           <Container fluid>
             <Navbar.Brand href="#" className="brand">
-              <img src="/asset/med.png" alt="" className="pt-[50px]" />
+              <img src={logo} alt="" className="pt-[50px]" />
             </Navbar.Brand>
             <Navbar.Toggle
               aria-controls="navbarScroll"
