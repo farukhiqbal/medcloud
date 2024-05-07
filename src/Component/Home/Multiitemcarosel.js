@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import './multiitemcarosel.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-
+import ldclogo from '../../asset/ldc.png'
 
 
 
@@ -61,7 +61,7 @@ const Multiitemcarosel = () => {
 
           {
             id:9,
-            imageSrc: '/asset/ldc.png',
+            imageSrc: ldclogo,
         
           },
 
