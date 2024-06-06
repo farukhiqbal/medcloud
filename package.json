@@ -23,7 +23,6 @@
     "react-scripts": "5.0.1",
     "react-scroll-trigger": "^0.6.14",
     "react-slick": "^0.29.0",
-    "react-snap": "^1.23.0",
     "react-spring": "^9.7.3",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
@@ -31,9 +30,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "react-snap",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postbuild": "react-snap"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -56,6 +55,11 @@
   "devDependencies": {
     "css-loader": "^6.8.1",
     "post": "^0.0.1",
+    "puppeteer": "^22.10.0",
+    "react-snap": "^1.23.0",
     "style-loader": "^3.3.3"
+  },
+  "react-snap": {
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
   }
 }
