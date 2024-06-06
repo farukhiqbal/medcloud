@@ -1,0 +1,8 @@
+* text=auto
+# Add all files and normalize line endings
+git add --renormalize .
+# Commit the changes
+git commit -m "Normalize line endings"
+
+
+echo "* text=auto" > .gitattributes
