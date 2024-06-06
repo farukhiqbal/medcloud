@@ -1,22 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';  // Older import method
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 
 const rootElement = document.getElementById("root");
 
 if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrate(
+  hydrateRoot(
+    rootElement,
     <React.StrictMode>
       <App />
-    </React.StrictMode>,
-    rootElement
+    </React.StrictMode>
   );
 } else {
-  ReactDOM.render(
+  const root = createRoot(rootElement);
+  root.render(
     <React.StrictMode>
       <App />
-    </React.StrictMode>,
-    rootElement
+    </React.StrictMode>
   );
 }
