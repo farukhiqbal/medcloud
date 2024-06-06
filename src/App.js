@@ -27,6 +27,7 @@ import Account from './Component/business/Account';
 import Payableaccount from './Component/business/Payableaccount';
 import Labtory from './Component/Healthcare/Labtory';
 import Whatsappchat from './Component/Header/Whatsappchat';
+import Sitemap from './Component/sitemap/Sitemap';
 
 AOS.init();
 
@@ -81,6 +82,7 @@ function App() {
      <Route path="/" element={<Home />} /> 
      <Route path="/home" element={<Home />} /> 
      <Route path="/featured" element={<Featured />} /> 
+     <Route path="/sitemap" element={<Sitemap />} />
      <Route path="/hrpay" element={<Hrpay />} /> 
      <Route path="/manufacturing" element={<ManuEpr />} /> 
      <Route path="/project" element={<Projectm/>} /> 
