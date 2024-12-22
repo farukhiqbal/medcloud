@@ -277,7 +277,7 @@ const Footer = () => {
       <div className='footer-bottom'>
             
             <div className='footer-left'>
-            <span>© 2020 Multi-Techno | All Rights Reserved </span>
+            <span>© 2024 medcloud | All Rights Reserved </span>
         
             </div>
          
