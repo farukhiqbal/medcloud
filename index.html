@@ -8,6 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 :root{
   --c1:#00e5ff;--c2:#7c3aed;--c3:#10b981;--c4:#f59e0b;--c5:#ff4d6d;
@@ -42,24 +43,34 @@ nav.solid{background:rgba(4,6,15,.85);backdrop-filter:blur(28px);border-bottom:1
 .btn-ln:hover{color:var(--txt);border-color:rgba(0,229,255,.4);background:rgba(0,229,255,.06)}
 .btn-cta{background:linear-gradient(135deg,var(--c1),#0088ee);color:#03050d;font-size:.84rem;font-weight:800;padding:.5rem 1.3rem;border-radius:8px;text-decoration:none;transition:all .25s;letter-spacing:.01em}
 .btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,229,255,.35)}
+.nav-toggle{display:none;width:42px;height:42px;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;border:1px solid var(--bord2);border-radius:10px;cursor:pointer;transition:all .25s}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--txt);border-radius:2px;transition:transform .3s,opacity .2s}
+.nav-toggle:hover{border-color:rgba(0,229,255,.4);background:rgba(0,229,255,.06)}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ── HERO ── */
-.hero{min-height:100vh;display:flex;align-items:center;padding:0 5%;position:relative;z-index:1;overflow:hidden}
-.hero-left{flex:1;max-width:650px;padding-top:80px}
+.hero{min-height:100vh;display:flex;flex-direction:column;padding:0;position:relative;z-index:1;overflow:hidden}
+.hero-main{flex:1 1 auto;display:flex;align-items:center;padding:110px 5% 3.5rem;min-height:0}
+.hero-left{flex:1;max-width:650px}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.22);border-radius:100px;padding:8px 20px;margin-bottom:2rem;animation:fadeUp .8s ease both}
 .hero-eyebrow-blink{width:7px;height:7px;border-radius:50%;background:var(--c1);animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,229,255,.6)}50%{opacity:.5;box-shadow:0 0 0 8px transparent}}
+@keyframes blinkG{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(16,185,129,.6)}50%{opacity:.5;box-shadow:0 0 0 8px transparent}}
 .hero-eyebrow-txt{font-size:.73rem;color:rgba(0,229,255,.9);font-weight:600;letter-spacing:.12em;text-transform:uppercase}
 .hero-h1{font-family:var(--fh);font-size:clamp(3.2rem,6.5vw,6rem);font-weight:900;line-height:1.01;letter-spacing:-.04em;color:var(--txt);margin-bottom:1.5rem;animation:fadeUp .9s .1s ease both}
 .hero-h1 .it{font-family:var(--fs);font-style:italic;font-weight:400;color:transparent;background:linear-gradient(90deg,var(--c1),#5eead4,var(--c2));-webkit-background-clip:text;background-clip:text}
 .hero-p{font-size:1.1rem;color:var(--txt2);line-height:1.8;max-width:540px;margin-bottom:2.5rem;animation:fadeUp .9s .2s ease both}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .9s .3s ease both}
-.btn-big{display:inline-flex;align-items:center;gap:10px;font-size:1rem;font-weight:700;padding:.9rem 2.2rem;border-radius:12px;text-decoration:none;transition:all .28s;letter-spacing:.01em}
-.btn-big-p{background:linear-gradient(135deg,var(--c1),#0080ff);color:#030810}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;animation:fadeUp .9s .3s ease both}
+.btn-big{display:inline-flex;align-items:center;gap:10px;font-size:1rem;font-weight:700;padding:.9rem 2.2rem;border-radius:12px;text-decoration:none;transition:all .28s;letter-spacing:.01em;white-space:nowrap;flex-shrink:0}
+.btn-big svg{width:18px;height:18px;fill:none;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-big-p{background:linear-gradient(135deg,var(--c1),#0088ee);color:#030810;box-shadow:0 8px 26px rgba(0,229,255,.16)}
 .btn-big-p:hover{transform:translateY(-3px);box-shadow:0 16px 44px rgba(0,229,255,.35)}
-.btn-big-p svg{width:18px;height:18px;stroke:#030810;fill:none;stroke-width:2.5;stroke-linecap:round}
-.btn-big-s{border:1px solid var(--bord2);color:var(--txt2);backdrop-filter:blur(10px);background:var(--glass)}
-.btn-big-s:hover{border-color:rgba(0,229,255,.35);color:var(--txt);background:rgba(0,229,255,.06);transform:translateY(-2px)}
+.btn-big-p svg{stroke:#030810;stroke-width:2.5}
+.btn-big-s{border:1px solid var(--bord2);color:var(--txt);backdrop-filter:blur(10px);background:var(--glass)}
+.btn-big-s svg{stroke:currentColor}
+.btn-big-s:hover{border-color:rgba(0,229,255,.45);color:var(--c1);background:rgba(0,229,255,.08);transform:translateY(-2px);box-shadow:0 12px 34px rgba(0,229,255,.14)}
 
 /* hero right: 3d mockup stack */
 .hero-right{flex:1;position:relative;height:600px;display:flex;align-items:center;justify-content:center;animation:fadeUp .9s .35s ease both}
@@ -93,7 +104,7 @@ nav.solid{background:rgba(4,6,15,.85);backdrop-filter:blur(28px);border-bottom:1
 .mk-pie{width:50px;height:50px;border-radius:50%;background:conic-gradient(var(--c1) 0% 40%,var(--c2) 40% 65%,var(--c3) 65% 82%,rgba(255,255,255,.1) 82% 100%);margin:auto}
 
 /* ── FLOATING STATS BELOW HERO ── */
-.hero-stats{position:absolute;bottom:0;left:0;right:0;background:rgba(4,6,15,.7);backdrop-filter:blur(24px);border-top:1px solid var(--bord);z-index:10;display:flex}
+.hero-stats{position:relative;flex-shrink:0;width:100%;background:rgba(4,6,15,.7);backdrop-filter:blur(24px);border-top:1px solid var(--bord);z-index:10;display:flex}
 .hs{flex:1;padding:1.4rem;text-align:center;border-right:1px solid var(--bord)}
 .hs:last-child{border:none}
 .hs-n{font-size:1.8rem;font-weight:900;letter-spacing:-.04em;background:linear-gradient(180deg,var(--txt),var(--txt2));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
@@ -103,7 +114,7 @@ nav.solid{background:rgba(4,6,15,.85);backdrop-filter:blur(28px);border-bottom:1
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── SHARED SECTION ── */
-section{position:relative;z-index:1;padding:110px 5%}
+section{position:relative;z-index:1;padding:110px 5%;scroll-margin-top:80px}
 .s-tag{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.1rem}
 .s-tag::before{content:'';width:22px;height:2px;background:currentColor;border-radius:1px;opacity:.7}
 .s-h{font-family:var(--fh);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:900;line-height:1.05;letter-spacing:-.04em;color:var(--txt);margin-bottom:.9rem}
@@ -116,7 +127,10 @@ section{position:relative;z-index:1;padding:110px 5%}
 .rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}.rv[data-d="3"]{transition-delay:.3s}
 
 /* ── MARQUEE ── */
-.mqwrap{overflow:hidden;border-top:1px solid var(--bord);border-bottom:1px solid var(--bord);background:var(--bg2);padding:16px 0}
+.mqwrap{overflow:hidden;border-top:1px solid var(--bord);border-bottom:1px solid var(--bord);background:var(--bg2);padding:16px 0;position:relative}
+.mqwrap::before,.mqwrap::after{content:'';position:absolute;top:0;bottom:0;width:clamp(40px,10vw,140px);z-index:2;pointer-events:none}
+.mqwrap::before{left:0;background:linear-gradient(90deg,var(--bg2),transparent)}
+.mqwrap::after{right:0;background:linear-gradient(-90deg,var(--bg2),transparent)}
 .mqtrack{display:flex;width:max-content;animation:mq 28s linear infinite}
 @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .mqi{display:flex;align-items:center;gap:.7rem;padding:0 2.5rem;font-size:.8rem;font-weight:600;color:var(--txt3);white-space:nowrap;letter-spacing:.02em}
@@ -233,7 +247,7 @@ section{position:relative;z-index:1;padding:110px 5%}
 .stab{padding:.5rem 1.25rem;border-radius:100px;border:1px solid var(--bord);font-size:.82rem;font-weight:600;color:var(--txt3);cursor:pointer;transition:all .22s;background:transparent}
 .stab.on{background:var(--c1);border-color:var(--c1);color:#03080e}
 .spanel{display:none}
-.spanel.on{display:grid;grid-template-columns:1fr 1.15fr;gap:4rem;align-items:center}
+.spanel.on{display:grid;grid-template-columns:1fr 1.15fr;gap:4rem;align-items:center;opacity:1;transform:none}
 .sp-img{border-radius:24px;overflow:hidden;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.5);border:1px solid var(--bord2)}
 .sp-img img{width:100%;height:360px;object-fit:cover;display:block}
 .sp-img-glow{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,229,255,.08),rgba(124,58,237,.06));pointer-events:none}
@@ -254,7 +268,7 @@ section{position:relative;z-index:1;padding:110px 5%}
 .testi-scroll::after{right:0;background:linear-gradient(-90deg,var(--bg2),transparent)}
 .testi-track{display:flex;gap:1.25rem;animation:tscroll 40s linear infinite;width:max-content}
 .testi-track:hover{animation-play-state:paused}
-@keyframes tscroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes tscroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-50% - .625rem))}}
 .tc{width:380px;flex-shrink:0;background:var(--glass);border:1px solid var(--bord);border-radius:22px;padding:2rem;transition:all .3s}
 .tc:hover{border-color:var(--bord2);transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .tc-stars{color:#f59e0b;font-size:.85rem;letter-spacing:2px;margin-bottom:.9rem}
@@ -263,27 +277,63 @@ section{position:relative;z-index:1;padding:110px 5%}
 .tc-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0;color:white}
 .tc-name{font-size:.85rem;font-weight:700;color:var(--txt)}
 .tc-role{font-size:.72rem;color:var(--txt3)}
+.testi-stats{display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center;margin-top:3rem}
+.tsi{display:inline-flex;align-items:center;gap:.6rem;padding:.65rem 1.2rem;border-radius:100px;background:var(--glass);border:1px solid var(--bord);font-size:.8rem;color:var(--txt2);font-weight:500;transition:all .25s}
+.tsi:hover{border-color:var(--bord2);background:var(--glass2);transform:translateY(-2px)}
+.tsi svg{width:15px;height:15px;fill:none;stroke:var(--c1);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.tsi b{color:var(--txt);font-weight:800}
+
+/* ── CONTACT US ── */
+.contact-section{background:var(--bg2);border-top:1px solid var(--bord);border-bottom:1px solid var(--bord)}
+.contact-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:4.5rem;align-items:center}
+.contact-hdr{margin-bottom:2.25rem}
+.contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ccard{display:flex;gap:1rem;align-items:flex-start;padding:1.35rem;border-radius:18px;background:var(--glass);border:1px solid var(--bord);text-decoration:none;transition:all .28s}
+.ccard:hover{border-color:rgba(0,229,255,.35);background:var(--glass2);transform:translateY(-4px);box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.ccard-ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(255,255,255,.12)}
+.ccard-ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ccard-l{font-size:.66rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--txt3);margin-bottom:.4rem}
+.ccard-v{font-size:.95rem;font-weight:700;color:var(--txt);margin-bottom:.25rem;word-break:break-word;line-height:1.35}
+.ccard-s{font-size:.75rem;color:var(--txt2);line-height:1.5}
+.ccard-wide{grid-column:span 2}
+.ccard-offices{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem;flex:1}
+.ccard-offices .office{min-width:0}
+.ccard-offices .office+.office{padding-left:1.75rem;border-left:1px solid var(--bord)}
+.ccard-offices .ccard-l{color:var(--c1)}
+.contact-hours{margin-top:1.5rem;display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1.15rem;border-radius:100px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);font-size:.78rem;color:var(--c3);font-weight:600}
+.contact-hours i{width:7px;height:7px;border-radius:50%;background:var(--c3);animation:blinkG 2s infinite;flex-shrink:0}
+.cta-btns.l{justify-content:flex-start}
+@media(max-width:980px){.contact-inner{grid-template-columns:1fr;gap:3rem}.contact-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.contact-cards{grid-template-columns:1fr}.ccard-wide{grid-column:span 1}.ccard-offices{grid-template-columns:1fr;gap:1.1rem}.ccard-offices .office+.office{padding-left:0;padding-top:1.1rem;border-left:none;border-top:1px solid var(--bord)}}
 
 /* ── CTA FINAL ── */
 .cta-section{background:var(--bg);padding:140px 5%;text-align:center;position:relative;overflow:hidden}
-.cta-glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.06),rgba(124,58,237,.04) 40%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:breathe 7s ease-in-out infinite}
+.cta-glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.06),rgba(124,58,237,.04) 40%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0;animation:breathe 7s ease-in-out infinite}
 @keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.15)}}
-.cta-section>*{position:relative;z-index:1}
+.cta-section>*:not(.cta-glow){position:relative;z-index:1}
 .cta-h{font-size:clamp(2.8rem,6vw,5.5rem);font-weight:900;letter-spacing:-.05em;line-height:1.02;color:var(--txt);margin-bottom:1.25rem}
 .cta-h .grd{color:transparent;background:linear-gradient(90deg,var(--c1),#5b21b6,var(--c3));-webkit-background-clip:text;background-clip:text}
 .cta-p{font-size:1.1rem;color:var(--txt2);max-width:540px;margin:0 auto 2.5rem;line-height:1.8}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;align-items:center}
 .contact-strip{display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:center;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--bord)}
 .ci{display:flex;align-items:center;gap:.6rem}
 .ci svg{width:16px;height:16px;stroke:var(--c1);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0}
+.ci svg.wa{fill:#25D366;stroke:none;stroke-width:0}
 .ci a{color:var(--txt2);text-decoration:none;font-size:.88rem;transition:color .2s}
 .ci a:hover{color:var(--c1)}
+.ci span{color:var(--txt2);font-size:.88rem}
+.ci.addr{align-items:flex-start;max-width:330px}
+.ci.addr svg{margin-top:2px}
+.ci.addr span{line-height:1.55}
 
 /* ── FOOTER ── */
 footer{background:#02040a;border-top:1px solid var(--bord);padding:80px 5% 40px}
 .fg{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr 1fr;gap:3rem;margin-bottom:4rem}
 .fb p{font-size:.82rem;color:var(--txt3);line-height:1.75;margin-top:.85rem;max-width:280px}
 .fb-badge{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.18);border-radius:6px;padding:.38rem .85rem;font-size:.7rem;color:var(--c3);font-weight:600}
+.fb-addr{display:flex;gap:.55rem;align-items:flex-start;margin-top:1.1rem;max-width:290px;font-size:.8rem;color:var(--txt2);text-decoration:none;line-height:1.6;transition:color .2s}
+.fb-addr:hover{color:var(--c1)}
+.fb-addr svg{width:15px;height:15px;fill:none;stroke:var(--c1);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px}
 .fc h5{font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--txt3);margin-bottom:1.1rem}
 .fc ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
 .fc a{font-size:.82rem;color:rgba(240,246,255,.3);text-decoration:none;transition:color .2s}
@@ -299,8 +349,41 @@ footer{background:#02040a;border-top:1px solid var(--bord);padding:80px 5% 40px}
 .whatsapp-float svg{width:32px;height:32px;fill:currentColor}
 .whatsapp-float:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(37,211,102,.45)}
 
-@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:2rem}.hero{flex-direction:column;padding-top:100px}.hero-right{display:none}.hero-p{max-width:100%}}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:2rem}.hero-main{flex-direction:column;align-items:flex-start;padding:100px 5% 2.5rem}.hero-right{display:none}.hero-p{max-width:100%}}
 @media(max-width:480px){.fg{grid-template-columns:1fr}.hero-h1{font-size:2.8rem}}
+
+/* ── SHORT LAPTOP SCREENS ── */
+@media(min-width:901px) and (max-height:860px){.hero-right{height:500px}.hero-main{padding:100px 5% 2.5rem}}
+@media(min-width:901px) and (max-height:700px){.hero-right{height:410px}.hero-h1{font-size:clamp(2.6rem,4.6vw,4rem)}.hero-p{font-size:1rem;margin-bottom:1.75rem}}
+
+/* ── MOBILE NAV ── */
+@media(max-width:980px){
+  .nav-toggle{display:flex}
+  .logo-img{width:180px;height:46px}
+  .nav-links{position:fixed;top:70px;left:0;right:0;flex-direction:column;gap:0;padding:.4rem 5% 1.2rem;background:rgba(4,6,15,.97);backdrop-filter:blur(28px);border-bottom:1px solid var(--bord);transform:translateY(-130%);transition:transform .38s cubic-bezier(.2,1,.3,1);max-height:calc(100vh - 70px);overflow-y:auto}
+  .nav-links.open{transform:translateY(0)}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:.85rem .6rem;font-size:.95rem;border-radius:10px}
+  .nav-r .btn-ln{display:none}
+}
+@media(max-width:768px){
+  .hero-stats{flex-wrap:wrap}
+  .hs{flex:1 1 45%;min-width:150px;border-bottom:1px solid var(--bord)}
+  .hs:nth-child(2n){border-right:none}
+  .hs:last-child{flex:1 1 100%}
+  .hs-n{font-size:1.45rem}
+}
+
+/* ── TOUCH DEVICES ── */
+@media(hover:none),(pointer:coarse){
+  body{cursor:auto}
+  .cur,.cur2{display:none}
+}
+
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
@@ -317,17 +400,19 @@ footer{background:#02040a;border-top:1px solid var(--bord);padding:80px 5% 40px}
   <a href="#" class="logo-wrap">
       <img src="med.png" alt="MedCloud Logo" class="logo-img">
     </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#services">Solutions</a></li>
     <li><a href="#integrations">Integrations</a></li>
     <li><a href="#dashboard">Live Demo</a></li>
     <li><a href="#showcase">Products</a></li>
     <li><a href="#process">Process</a></li>
-    <li><a href="#cta">Contact</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-r">
     <a href="https://doctors-hub.com/" target="_blank" class="btn-ln">Log In</a>
-    <a href="#cta" class="btn-cta">Get Demo →</a>
+    <a href="#contact" class="btn-cta">Get Demo →</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -338,6 +423,7 @@ footer{background:#02040a;border-top:1px solid var(--bord);padding:80px 5% 40px}
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
+  <div class="hero-main">
   <div class="hero-left">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-blink"></div>
@@ -354,7 +440,7 @@ footer{background:#02040a;border-top:1px solid var(--bord);padding:80px 5% 40px}
         Explore Solutions
         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <a href="#cta" class="btn-big btn-big-s">Book Free Consultation</a>
+      <a href="#contact" class="btn-big btn-big-s">Book Free Consultation</a>
     </div>
   </div>
   <div class="hero-right">
@@ -419,6 +505,7 @@ footer{background:#02040a;border-top:1px solid var(--bord);padding:80px 5% 40px}
         </div>
       </div>
     </div>
+  </div>
   </div>
   <!-- Stats Bar -->
   <div class="hero-stats">
@@ -580,7 +667,7 @@ footer{background:#02040a;border-top:1px solid var(--bord);padding:80px 5% 40px}
     <div class="dash-bar">
       <div class="wdots"><div class="wdot" style="background:#ff5f57"></div><div class="wdot" style="background:#febc2e"></div><div class="wdot" style="background:#28c840"></div></div>
       <div class="url"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="var(--c3)" stroke-width="2"><rect x="2" y="5" width="8" height="6" rx="1"/><path d="M4 5V3.5a2 2 0 014 0V5"/></svg>app.medcloud.com.pk</div>
-      <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:.7rem;color:var(--c3)"><div style="width:6px;height:6px;border-radius:50%;background:var(--c3);animation:blink 1.5s infinite"></div>Live — <span id="lt"></span></div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:.7rem;color:var(--c3)"><div style="width:6px;height:6px;border-radius:50%;background:var(--c3);animation:blinkG 1.5s infinite"></div>Live — <span id="lt"></span></div>
     </div>
     <div class="prod-pills">
       <div class="pp on" onclick="sp(this,'hms')"><div class="pp-dot" style="background:var(--c1)"></div>Hospital HMS</div>
@@ -651,14 +738,14 @@ footer{background:#02040a;border-top:1px solid var(--bord);padding:80px 5% 40px}
     <div><div class="s-tag" style="color:var(--c3)">Laboratory (LIS)</div><h3 class="s-h" style="font-size:1.9rem">Machine integration that eliminates all manual entry</h3>
     <div class="sp-feats">
       <div class="sp-feat"><div class="sp-fi" style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.25)"><svg viewBox="0 0 24 24" style="stroke:var(--c3)"><path d="M8 3v4l-4 6a2 2 0 002 3h12a2 2 0 002-3l-4-6V3"/><line x1="6" y1="3" x2="18" y2="3"/></svg></div><div><div class="sp-ft">Analyzer Machine Integration</div><div class="sp-fd">Direct LIS bridge to your lab analyzers — results auto-populate into patient records the moment they're ready.</div></div></div>
-      <div class="sp-feat"><div class="sp-fi" style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.25)"><svg viewBox="0 0 24 24" style="stroke:var(--c3)"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 014.07 9.81"/></svg></div><div><div class="sp-ft">WhatsApp Report Delivery</div><div class="sp-fd">Branded PDF lab reports sent automatically to patients on WhatsApp the moment results are verified.</div></div></div>
+      <div class="sp-feat"><div class="sp-fi" style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.25)"><svg viewBox="0 0 24 24" style="stroke:var(--c3)"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div><div><div class="sp-ft">WhatsApp Report Delivery</div><div class="sp-fd">Branded PDF lab reports sent automatically to patients on WhatsApp the moment results are verified.</div></div></div>
       <div class="sp-feat"><div class="sp-fi" style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.25)"><svg viewBox="0 0 24 24" style="stroke:var(--c3)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div><div class="sp-ft">Sample Barcode Tracking</div><div class="sp-fd">Track every sample from collection to result with barcode scanning and real-time status updates.</div></div></div>
     </div></div>
   </div>
   <!-- HRMS -->
   <div class="spanel rv" id="s-hrms">
     <div class="sp-img"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80" alt="HRMS"><div class="sp-img-glow"></div></div>
-    <div><div class="s-tag" style="color:#a78bfa)">HR & Payroll</div><h3 class="s-h" style="font-size:1.9rem">ZK biometric to payslip — fully automated</h3>
+    <div><div class="s-tag" style="color:#a78bfa">HR & Payroll</div><h3 class="s-h" style="font-size:1.9rem">ZK biometric to payslip — fully automated</h3>
     <div class="sp-feats">
       <div class="sp-feat"><div class="sp-fi" style="background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.25)"><svg viewBox="0 0 24 24" style="stroke:#a78bfa"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><div><div class="sp-ft">ZK Biometric Auto-Sync</div><div class="sp-fd">Fingerprint and face recognition machines sync attendance data automatically — midnight batch or real-time.</div></div></div>
       <div class="sp-feat"><div class="sp-fi" style="background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.25)"><svg viewBox="0 0 24 24" style="stroke:#a78bfa"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><div><div class="sp-ft">Automated Payroll Engine</div><div class="sp-fd">Salary, overtime, deductions, loans, and tax — calculated automatically from attendance data with zero manual entry.</div></div></div>
@@ -716,21 +803,73 @@ footer{background:#02040a;border-top:1px solid var(--bord);padding:80px 5% 40px}
 </section>
 
 <!-- ═══ TESTIMONIALS ═══ -->
-<section class="testi-section">
+<section class="testi-section" id="testimonials">
   <div class="hdr c rv">
-    <div class="s-tag" style="color:var(--c1)">Contact Us</div>
-    <h2 class="s-h">Ready to transform your<br><em>enterprise operations?</em></h2>
-    <p class="s-p">Book a free consultation and let us show you how MedCloud can streamline every department — from hospital management to finance and supply chain.</p>
-  </div>
-  <div class="cta-btns">
-    <a href="https://calendly.com/medcloud/30min" target="_blank" class="btn-big btn-big-p">
-      Book Free Consultation
-      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    </a>
-    <a href="tel:+923001234567" class="btn-big btn-big-s">Call +92 300 1234567</a>
+    <div class="s-tag" style="color:var(--c1)">Client Stories</div>
+    <h2 class="s-h">Trusted by Pakistan's<br><em>leading enterprises</em></h2>
+    <p class="s-p">500+ organisations — hospital networks, textile mills, pharma groups and retailers — run their daily operations on MedCloud. Here is what their teams say.</p>
   </div>
   <div class="testi-scroll rv">
     <div class="testi-track" id="tt"></div>
+  </div>
+  <div class="testi-stats rv">
+    <div class="tsi"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg><span><b>500+</b> active clients</span></div>
+    <div class="tsi"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span><b>4.9/5</b> average rating</span></div>
+    <div class="tsi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span><b>24/7</b> support coverage</span></div>
+    <div class="tsi"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg><span><b>12+</b> years in enterprise software</span></div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT US ═══ -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left rv">
+      <div class="hdr contact-hdr">
+        <div class="s-tag" style="color:var(--c2)">Contact Us</div>
+        <h2 class="s-h">Ready to transform your<br><em>enterprise operations?</em></h2>
+        <p class="s-p">Book a free 30-minute consultation and let us show you how MedCloud can streamline every department — from hospital management to finance and supply chain.</p>
+      </div>
+      <div class="cta-btns l">
+        <a href="https://calendly.com/medcloud/30min" target="_blank" class="btn-big btn-big-p">
+          Book Free Consultation
+          <svg viewBox="0 0 24 24"><rect x="3" y1="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </a>
+        <a href="tel:+923016888226" class="btn-big btn-big-s">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 014.07 9.81 19.79 19.79 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call +92 301 6888226
+        </a>
+      </div>
+      <div class="contact-hours"><i></i> Office hours: Mon–Sat, 9:00am – 9:00pm PKT · Replies within 2 working hours</div>
+    </div>
+    <div class="contact-cards rv">
+      <a class="ccard" href="tel:+923016888226">
+        <div class="ccard-ic" style="background:rgba(0,229,255,.1);border-color:rgba(0,229,255,.25);color:var(--c1)"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 014.07 9.81 19.79 19.79 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><div class="ccard-l">Call Sales</div><div class="ccard-v">+92 301 6888226</div><div class="ccard-s">Talk to a solutions engineer directly</div></div>
+      </a>
+      <a class="ccard" href="https://wa.me/447874833944" target="_blank">
+        <div class="ccard-ic" style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.25);color:var(--c3)"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+        <div><div class="ccard-l">WhatsApp</div><div class="ccard-v">+44 7874 833944</div><div class="ccard-s">Fastest way to reach our team</div></div>
+      </a>
+      <a class="ccard" href="mailto:info@medcloud.com.pk">
+        <div class="ccard-ic" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);color:var(--c4)"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="ccard-l">Email Us</div><div class="ccard-v">info@medcloud.com.pk</div><div class="ccard-s">Proposals, tenders &amp; RFPs welcome</div></div>
+      </a>
+      <a class="ccard ccard-wide" href="https://maps.google.com/?q=P117+Street+1+G1+Block+Near+Doctors+Hospital+Johar+Town+Lahore" target="_blank">
+        <div class="ccard-ic" style="background:rgba(255,77,109,.1);border-color:rgba(255,77,109,.25);color:var(--c5)"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="ccard-offices">
+          <div class="office">
+            <div class="ccard-l">Office — Lahore</div>
+            <div class="ccard-v">P#117, Street #1, G1 Block</div>
+            <div class="ccard-s">Near Doctors Hospital, Johar Town, Lahore, Punjab, Pakistan</div>
+          </div>
+          <div class="office">
+            <div class="ccard-l">Office — Faisalabad</div>
+            <div class="ccard-v">Faisalabad, Punjab</div>
+            <div class="ccard-s">On-site &amp; remote deployments across Pakistan &amp; the Gulf</div>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -742,15 +881,15 @@ footer{background:#02040a;border-top:1px solid var(--bord);padding:80px 5% 40px}
   <p class="cta-p">Whether you need a full hospital management system, enterprise ERP, ZK biometric integration, or custom API development — our team is ready.</p>
   <div class="cta-btns">
     <a href="tel:+923016888226" class="btn-big btn-big-p"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 014.07 9.81 19.79 19.79 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call Us Now</a>
-    <a href="https://wa.me/447874833944" target="_blank" class="btn-big btn-big-s">💬 WhatsApp</a>
-    <a href="mailto:info@medcloud.com.pk" class="btn-big btn-big-s">✉️ Email Us</a>
+    <a href="https://wa.me/447874833944" target="_blank" class="btn-big btn-big-s"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>WhatsApp</a>
+    <a href="mailto:info@medcloud.com.pk" class="btn-big btn-big-s"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email Us</a>
   </div>
   <div class="contact-strip">
-    <div class="ci"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="#">Faisalabad, Punjab, Pakistan</a></div>
-    <div class="ci"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 014.07 9.81"/></svg><a href="tel:+923016888226"> +92 301 6888226</a></div>
-    <div class="ci"><svg viewBox="0 0 24 24"><path d="M16 8a8 8 0 10-16 0v24h24V12h-8z"/><path d="M12 2v4M12 16v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M16 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg><a href="https://wa.me/447874833944" target="_blank"> +44 7874 833944 (WhatsApp)</a></div>
+    <div class="ci addr"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>P#117, Street #1, G1 Block, Near Doctors Hospital, Johar Town, Lahore</span></div>
+    <div class="ci"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+923016888226">+92 301 6888226</a></div>
+    <div class="ci"><svg class="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><a href="https://wa.me/447874833944" target="_blank">+44 7874 833944 (WhatsApp)</a></div>
     <div class="ci"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@medcloud.com.pk">info@medcloud.com.pk</a></div>
-    <div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg><a href="#">Mon–Sat 9am–9pm PKT</a></div>
+    <div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg><span>Mon–Sat 9am–9pm PKT</span></div>
   </div>
 </section>
 
@@ -763,11 +902,15 @@ footer{background:#02040a;border-top:1px solid var(--bord);padding:80px 5% 40px}
       </a>
       <p>Pakistan's leading enterprise software company — building hospital management systems, ERP, HRMS, supply chain, and deep API integrations for organizations that can't afford to fail.</p>
       <div class="fb-badge">🇵🇰 Built in Pakistan · Deployed Globally</div>
+      <a class="fb-addr" href="https://maps.google.com/?q=P117+Street+1+G1+Block+Near+Doctors+Hospital+Johar+Town+Lahore" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>P#117, Street #1, G1 Block, Near Doctors Hospital, Johar Town, Lahore</span>
+      </a>
     </div>
     <div class="fc"><h5>Products</h5><ul><li><a href="#services">Hospital HMS</a></li><li><a href="#services">HR Management</a></li><li><a href="#services">Supply Chain</a></li><li><a href="#services">Finance System</a></li><li><a href="#services">ERP Suite</a></li><li><a href="#services">Custom Software</a></li></ul></div>
     <div class="fc"><h5>Integrations</h5><ul><li><a href="#integrations">LIS Machines</a></li><li><a href="#integrations">ZK Biometric</a></li><li><a href="#integrations">PACS / DICOM</a></li><li><a href="#integrations">WhatsApp API</a></li><li><a href="#integrations">Payment Gateways</a></li><li><a href="#integrations">ERP Bridges</a></li></ul></div>
     <div class="fc"><h5>Company</h5><ul><li><a href="#">About Us</a></li><li><a href="#">Our Team</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Partners</a></li></ul></div>
-    <div class="fc"><h5>Support</h5><ul><li><a href="#">Help Center</a></li><li><a href="https://doctors-hub.com/" target="_blank">Client Login</a></li><li><a href="#">System Status</a></li><li><a href="https://wa.me/447874833944" target="_blank">WhatsApp</a></li><li><a href="tel:+92301 6888226">Call Us</a></li></ul></div>
+    <div class="fc"><h5>Support</h5><ul><li><a href="#">Help Center</a></li><li><a href="https://doctors-hub.com/" target="_blank">Client Login</a></li><li><a href="#">System Status</a></li><li><a href="https://wa.me/447874833944" target="_blank">WhatsApp</a></li><li><a href="tel:+923016888226">Call Us</a></li></ul></div>
   </div>
   <div class="fbottom">
     <p>© 2025 MedCloud Technologies, Faisalabad, Pakistan. All rights reserved.</p>
@@ -786,6 +929,14 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;C.style.left
 // ── NAV
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('solid',scrollY>40));
 document.getElementById('nav').classList.add('solid');
+
+// ── MOBILE NAV TOGGLE
+const navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navLinks');
+function closeNav(){navLinks.classList.remove('open');navToggle.classList.remove('open');navToggle.setAttribute('aria-expanded','false')}
+navToggle.addEventListener('click',e=>{e.stopPropagation();const open=navLinks.classList.toggle('open');navToggle.classList.toggle('open',open);navToggle.setAttribute('aria-expanded',String(open))});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeNav));
+document.addEventListener('click',e=>{if(!e.target.closest('#navToggle')&&!e.target.closest('#navLinks'))closeNav()});
+window.addEventListener('resize',()=>{if(innerWidth>980)closeNav()});
 
 // ── THREE.JS BACKGROUND PARTICLES
 (function(){
@@ -920,13 +1071,14 @@ function buildDash(p){
   ['si1','si2','si3','si4','si5','si6'].forEach((id,i)=>{const el=document.getElementById(id);if(el)el.textContent=d.si[i]||''});
   document.getElementById('alist').innerHTML=d.acts.map(a=>`<div class="act-i"><div class="act-d" style="background:${a[0]}"></div><div class="act-t">${a[1]}</div><div class="act-tm">${a[2]}</div></div>`).join('');
   document.getElementById('glist').innerHTML=d.gauges.map(g=>`<div class="g-row"><div class="g-l">${g[0]}</div><div class="g-bar"><div class="g-fill" style="width:${g[1]}%;background:${g[2]}"></div></div><div class="g-v">${g[1]}%</div></div>`).join('');
+  if(typeof Chart==='undefined'){console.warn('Chart.js unavailable — dashboard charts skipped');return}
   const mk={responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'rgba(240,246,255,.3)',font:{size:9}}},y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'rgba(240,246,255,.3)',font:{size:9}}}}};
   if(mChart)mChart.destroy();
   mChart=new Chart(document.getElementById('mc'),{type:'bar',data:{labels:d.blabels,datasets:[{data:d.bar,backgroundColor:d.bcolor+'.5)',borderColor:d.bcolor+'.9)',borderWidth:1.5,borderRadius:3}]},options:{...mk,plugins:{legend:{display:false}}}});
   if(dChart)dChart.destroy();
   dChart=new Chart(document.getElementById('dc'),{type:'doughnut',data:{labels:d.donut.map(x=>x[2]),datasets:[{data:d.donut.map(x=>x[0]),backgroundColor:d.donut.map(x=>x[1]),borderColor:'rgba(255,255,255,.04)',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:true,cutout:'60%',plugins:{legend:{display:true,position:'bottom',labels:{color:'rgba(240,246,255,.4)',font:{size:9},boxWidth:9,padding:8}}}}});
 }
-window.addEventListener('load',()=>buildDash('hms'));
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>buildDash('hms'));else buildDash('hms');
 function sp(el,p){document.querySelectorAll('.pp').forEach(t=>t.classList.remove('on'));el.classList.add('on');buildDash(p);document.querySelectorAll('.dsb-i').forEach((s,i)=>s.classList.toggle('on',i===0))}
 function dsi(el){document.querySelectorAll('.dsb-i').forEach(s=>s.classList.remove('on'));el.classList.add('on')}
 
